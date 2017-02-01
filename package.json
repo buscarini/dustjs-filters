@@ -1,0 +1,19 @@
+{
+  "name": "dustjs-filters",
+  "version": "0.1.0",
+  "description": "Adds some custom filters to dustjs-linkedin and dustjs-helpers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+git@github.com:buscarini/dustjs-filters.git"
+  },
+  "author": "José Manuel Sánchez <buscarini@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+      "dustjs-helpers": "^1.7.3",
+      "dustjs-linkedin": "^2.7.5"
+  }
+}
