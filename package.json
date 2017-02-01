@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+git@github.com:buscarini/dustjs-filters.git"
+    "url": "git+https://github.com/buscarini/dustjs-filters"
   },
   "author": "José Manuel Sánchez <buscarini@gmail.com>",
   "license": "MIT",
