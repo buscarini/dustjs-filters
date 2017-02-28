@@ -16,7 +16,8 @@ function lowercase(value) {
 
 function filter(chunk, context, bodies, params) {
 	
-	let isTrue = params.isTrue // dust.helpers.tap(params.isTrue, chunk, context)
+	let isTrue = params.isTrue
+	let isFalse = params.isFalse
 	let list = context.resolve(params.key)
 
 	if (!Array.isArray(list)) {
