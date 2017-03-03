@@ -25,29 +25,30 @@ function filter(chunk, context, bodies, params) {
 	}
 
 	let results = []
-	if (isTrue) {
-		for (let i = list.length - 1; i >= 0; i--) {
-			const item = list[i]
-			if (item[isTrue]) {
-				results.push(item)
+
+	for (let i = list.length - 1; i >= 0; i--) {
+		const item = list[i]
+		
+		let pushItem = true
+		
+		if (isTrue) {
+			if (!item[isTrue]) {
+				pushItem = false
 			}
 		}
 		
-		return results
-	}
-	
-	if (isFalse) {
-		for (let i = list.length - 1; i >= 0; i--) {
-			const item = list[i]
-			if (!item[isFalse]) {
-				results.push(item)
+		if (isFalse) {
+			if (item[isFalse]) {
+				pushItem = false
 			}
 		}
 		
-		return results
+		if (pushItem) {
+			results.push(item)
+		}	
 	}
 		
-	return context
+	return results
 }
 
 dust.helpers.filter = filter
