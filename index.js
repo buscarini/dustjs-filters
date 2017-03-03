@@ -14,10 +14,22 @@ function lowercase(value) {
 	return value.toLowerCase()
 }
 
+const readParam = param => {
+	let result = ""
+	try {
+		result = JSON.parse(param)
+	} catch (e) {
+		result = param	
+	}
+	
+	return result
+}
+
 function filter(chunk, context, bodies, params) {
 	
-	let isTrue = params.isTrue
-	let isFalse = params.isFalse
+	let isTrue = readParam(params.isTrue)	
+	let isFalse = readParam(params.isFalse)
+	
 	let list = context.resolve(params.key)
 
 	if (!Array.isArray(list)) {
@@ -32,14 +44,34 @@ function filter(chunk, context, bodies, params) {
 		let pushItem = true
 		
 		if (isTrue) {
-			if (!item[isTrue]) {
-				pushItem = false
+			if (Array.isArray(isTrue)) {
+				for (let i = isTrue.length - 1; i >= 0; i--) {
+					const conditionKey = isTrue[i]
+					if (!item[conditionKey]) {
+						pushItem = false
+					}
+				}
+			}
+			else {
+				if (!item[isTrue]) {
+					pushItem = false
+				}
 			}
 		}
 		
 		if (isFalse) {
-			if (item[isFalse]) {
-				pushItem = false
+			if (Array.isArray(isFalse)) {
+				for (let i = isFalse.length - 1; i >= 0; i--) {
+					const conditionKey = isFalse[i]
+					if (item[conditionKey]) {
+						pushItem = false
+					}
+				}
+			}
+			else {
+				if (item[isFalse]) {
+					pushItem = false
+				}
 			}
 		}
 		
