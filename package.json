@@ -1,6 +1,6 @@
 {
   "name": "dustjs-filters",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Adds some custom filters to dustjs-linkedin and dustjs-helpers",
   "main": "index.js",
   "scripts": {
