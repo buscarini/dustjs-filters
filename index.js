@@ -83,6 +83,17 @@ function filter(chunk, context, bodies, params) {
 	return results
 }
 
+dust._renderSource = dust.renderSource
+
+dust.renderSource = (src, entity, cb) => {
+	try {
+		dust._renderSource(src, entity, cb)
+	}
+	catch(e) {
+		cb(e.message)
+	}
+}
+
 dust.helpers.filter = filter
 
 dust.filters.title = titlecase
